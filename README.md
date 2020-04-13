@@ -74,19 +74,19 @@ Directory for defining routes. I don't think this needs more explanation.
   ```bash
   npm run coverage
   ```
-  Note: You will need to add the ```CODECOV_TOKEN``` to your repository secrets for GitHub actions to work well, and export it as an environment variable to run it locally.
+
+  Note: You will need to add the `CODECOV_TOKEN` to your repository secrets for GitHub actions to work well, and export it as an environment variable to run it locally.
 
 ## Dependencies
 
-| Dependency                                                       | Usage                                                              |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [body-parser](https://npm.com/package/body-parser)               | POST body parsing middleware. Adds body object to incoming request |
-| [compression](https://npmjs.com/package/compression)             | Response compression middleware                                    |
-| [express](https://npmjs.com/package/express)                     | Express REST API framework                                         |
-| [express-sanitizer](https://npmjs.com/package/express-sanitizer) | Prevents XSS and sanitizes incoming requests                       |
-| [morgan](https://npmjs.com/package/morgan)                       | HTTP request logger                                                |
-| [winston](https://npmjs.com/package/winston)                     | General purpose logger for the application                         |
-| [nyc](https://npmjs.com/package/nyc)                             | Code Coverage tool                                                 |
-| [standard](https://npmjs.com/package/standard)                   | Linting and styling tool.                                          |
-| [chai](https://npmjs.com/package/chai)                           | Assertion Library                                                  |
-| [chai-http](https://npmjs.com/package/chai-http)                 | Middleware for chai to test http endpoints                         |
+| Dependency                                           | Usage                                                              |
+| ---------------------------------------------------- | ------------------------------------------------------------------ |
+| [body-parser](https://npm.com/package/body-parser)   | POST body parsing middleware. Adds body object to incoming request |
+| [compression](https://npmjs.com/package/compression) | Response compression middleware                                    |
+| [express](https://npmjs.com/package/express)         | Express REST API framework                                         |  |
+| [morgan](https://npmjs.com/package/morgan)           | HTTP request logger                                                |
+| [winston](https://npmjs.com/package/winston)         | General purpose logger for the application                         |
+| [nyc](https://npmjs.com/package/nyc)                 | Code Coverage tool                                                 |
+| [standard](https://npmjs.com/package/standard)       | Linting and styling tool.                                          |
+| [chai](https://npmjs.com/package/chai)               | Assertion Library                                                  |
+| [chai-http](https://npmjs.com/package/chai-http)     | Middleware for chai to test http endpoints                         |

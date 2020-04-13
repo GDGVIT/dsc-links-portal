@@ -1,5 +1,4 @@
 const express = require('express')
-const expressSanitizer = require('express-sanitizer')
 const compression = require('compression')
 
 const morgan = require('./logging/morgan')
@@ -9,7 +8,6 @@ const app = express()
 
 // Middlewares
 app.use(express.json())
-app.use(expressSanitizer())
 app.use(compression())
 
 // Logging
