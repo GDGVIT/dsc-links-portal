@@ -10,7 +10,7 @@
 ## Functionality
 
 - Idiomatic and configurable logging
-- Anti-XSS and response compression
+- Response compression
 - Sane linting and styling guidelines
 - Continuous integration using github actions
 - Tests
