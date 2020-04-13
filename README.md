@@ -4,6 +4,8 @@
 	<h4 align="center">A template to quickstart Node.JS REST APIs<h4>
 </p>
 
+![Tests](https://github.com/GDGVIT/node-template/workflows/Tests/badge.svg)
+[![codecov](https://codecov.io/gh/GDGVIT/node-template/branch/master/graph/badge.svg)](https://codecov.io/gh/GDGVIT/node-template)
 
 ## Functionality
 
