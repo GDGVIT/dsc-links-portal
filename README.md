@@ -76,9 +76,6 @@ Directory for defining routes. I don't think this needs more explanation.
   ```
   Note: You will need to add the ```CODECOV_TOKEN``` to your repository secrets for GitHub actions to work well, and export it as an environment variable to run it locally.
 
-* The master branch ships code for a **http** server. Checkout the **https** branch for the https server.
-  Replace the self-signed certificates in the certs with your own SSL certificates.
-
 ## Dependencies
 
 | Dependency                                                       | Usage                                                              |
