@@ -24,6 +24,9 @@ const checkURL = function (item) {
 
 router.get('/', (req, res) => {
   client.get('completeData', async (err, reply) => {
+    if (err) {
+      return res.send(err);
+    }
     if (reply) {
       reply = JSON.parse(reply);
       res.json(reply);
