@@ -1,6 +1,5 @@
 const express = require('express');
 const compression = require('compression');
-
 const morgan = require('./logging/morgan');
 const routes = require('./routes');
 
