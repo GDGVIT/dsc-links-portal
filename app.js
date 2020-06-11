@@ -1,10 +1,8 @@
 const express = require('express');
 const compression = require('compression');
-const dotEnv = require('dotenv');
 const morgan = require('./logging/morgan');
 const routes = require('./routes');
 
-dotEnv.config();
 const app = express();
 
 // Middlewares
