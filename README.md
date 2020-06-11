@@ -47,9 +47,9 @@ Md Hishaam Akhtar
 <img src="https://instagram.fccu7-1.fna.fbcdn.net/v/t51.2885-15/e35/84488168_124595108923170_2795166731995253471_n.jpg?_nc_ht=instagram.fccu7-1.fna.fbcdn.net&amp;_nc_cat=106&amp;_nc_ohc=r4rAEA_dOacAX9pVCHi&amp;oh=7f050ec636de36343bc186a06f3598ad&amp;oe=5EF71816" width="150" height="150" alt="Md Hishaam Akhtar">
 </p>
 <p align="center">
-<a href = "https://github.com/mdhishaamakhtar"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://github.com/mdhishaamakhtar"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
 <a href = "https://www.linkedin.com/in/md-hishaam-akhtar-812a3019a/">
-<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
 </a>
 </p>
 </td>
@@ -61,9 +61,9 @@ Pragati Bhattad
 <img src="https://media-exp1.licdn.com/dms/image/C5103AQFzLkP040nCHQ/profile-displayphoto-shrink_800_800/0?e=1597276800&v=beta&t=F9L1dyWy_JslZ2A5oOPeWDwYVJ4hHqEwB4CYRBnTyMY" width="150" height="150" alt="Md Hishaam Akhtar">
 </p>
 <p align="center">
-<a href = "https://github.com/Pragati1610"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://github.com/Pragati1610"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
 <a href = "https://www.linkedin.com/in/pragati-bhattad-53a849198/">
-<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
 </a>
 </p>
 </td>
