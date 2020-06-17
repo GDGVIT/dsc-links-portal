@@ -20,15 +20,15 @@ on:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Redis Server in GitHub Actions
-        uses: supercharge/redis-github-action@1.1.0
         
       - name: Fetch dependencies    
         run: npm install
 
       - name: Run tests and generate coverage report
         run: npm test
+
+      - name: Redis Server in GitHub Actions
+        uses: supercharge/redis-github-action@1.1.0
 
       - name: Upload coverage report to Codecov
         env:
