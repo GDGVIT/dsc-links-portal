@@ -12,19 +12,20 @@ const url = `https://graph.facebook.com/${process.env.INSTAGRAM_ID}/media?fields
 const checkURL = function (item) {
   const caption = item.caption;
   caption.split(' ').forEach((part) => {
-    const regexWithoutHttp = /[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
-    // const regexWithHttp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
+    // const regexWithoutHttp = /[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
+    const regexWithHttp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
 
-    if (part.match(regexWithoutHttp)) {
+    if (part.match(regexWithHttp)) {
       part = part.split(/[\r\n]+/gm);
       item.url = part[0];
-    } else {
-      item.url = '';
     }
   });
+  if (!item.url) {
+    item.url = '';
+  }
 };
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   client.get('completeData', async (err, reply) => {
     if (err) {
       return res.send(err);

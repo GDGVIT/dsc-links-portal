@@ -6,15 +6,6 @@ on:
   pull_request:
     branches:
       - master
-jobs:
-  container-job:
-    runs-on: ubuntu-latest
-    services:
-      redis:
-        image: redis
-        ports:
-        - 6379:6379
-        options: --entrypoint redis-server
   test:
     name: Test
     runs-on: ${{ matrix.os }}
@@ -30,6 +21,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Redis Server in GitHub Actions
+        uses: supercharge/redis-github-action@1.1.0
+        
       - name: Fetch dependencies    
         run: npm install
 
