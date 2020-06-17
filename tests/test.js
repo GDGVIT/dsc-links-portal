@@ -5,10 +5,10 @@ const assert = chai.assert;
 const app = require('../app');
 const { describe, it } = require('mocha');
 
-describe('# Test Suite', function () {
-  it('# Test description', async function () {
+describe('# Test for index route', function () {
+  it('# Checking if any data is being returned', async function () {
     const res = await chai.request(app)
       .get('/');
-    assert.equal(res.body.user, 'none');
+    assert.exists(res.body.data, 'data is neither `null` nor `undefined`');
   });
 });

@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "test": "semistandard && nyc --reporter=lcov mocha tests/*",
+    "test": "semistandard --fix && nyc --reporter=lcov mocha --exit tests/*",
     "lint": "semistandard --fix",
     "start": "node server.js",
     "coverage": "codecov"
