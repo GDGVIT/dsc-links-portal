@@ -44,7 +44,7 @@ router.get('/', (_req, res) => {
             data: data
           }),
           'EX',
-          7 * 60 * 60
+            60 * 60
         );
         return res.status(200).json({
           data: data
