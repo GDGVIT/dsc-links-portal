@@ -8,55 +8,96 @@ client.on('error', function (error) {
   console.error(error);
 });
 
-const url = `https://graph.facebook.com/${process.env.INSTAGRAM_ID}/media?fields=id,media_type,media_url,timestamp,caption&access_token=${process.env.ACCESS_TOKEN}`;
-const checkURL = function (item) {
-  const caption = item.caption;
-  caption.split(' ').forEach((part) => {
-    // const regexWithoutHttp = /[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
-    const regexWithHttp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
 
-    if (part.match(regexWithHttp)) {
-      part = part.split(/[\r\n]+/gm);
-      item.url = part[0];
+const url = `https://graph.facebook.com/${process.env.INSTAGRAM_ID}/media?fields=id,media_type,media_url,timestamp,caption&access_token=${process.env.ACCESS_TOKEN}`;
+
+let checkURL = function(item) {
+    try {
+        let caption = item.caption;
+        caption.split(" ").forEach((part) => {
+            // let regexWithoutHttp = /[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
+            part = part.replace(/(\r\n|\n|\r)/gm, "");
+            console.log(part)
+            let regexWithHttp = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&\/=]*)/;
+
+            if (part.includes("https")) {
+                let n = part.indexOf("https")
+                part = part.slice(n)
+            }
+
+            if (part.match(regexWithHttp) || part.includes("dscv.it")) {
+                part = part.split(/[\r\n]+/gm)
+                console.log(part[0])
+                item.url = part[0];
+            }
+        });
+        if (!item.url) {
+            item.url = ""
+        }
+    } catch (e) {
+        console.log(e)
     }
-  });
-  if (!item.url) {
-    item.url = '';
-  }
 };
 
 router.get('/', (_req, res) => {
-  client.get('completeData', async (err, reply) => {
-    if (err) {
-      return res.send(err);
-    }
-    if (reply) {
-      reply = JSON.parse(reply);
-      res.json(reply);
-    } else {
-      try {
-        const result = await axios.get(url);
-        const data = result.data.data;
-        data.forEach(checkURL);
-        client.set(
-          'completeData',
-          JSON.stringify({
-            data: data
-          }),
-          'EX',
-            60 * 60
-        );
-        return res.status(200).json({
-          data: data
-        });
-      } catch (err) {
-        console.log(err);
-        res.status(500).json({
-          error: err
-        });
-      }
-    }
-  });
+   client.get("completeData", async(err, reply) => {
+        if (reply) {
+            reply = JSON.parse(reply);
+            res.json(reply);
+        } else {
+            try {
+                let result = await axios.get(url);
+                let data = result.data.data;
+                data.forEach(checkURL);
+                client.set(
+                    "completeData",
+                    JSON.stringify({
+                        data: data,
+                    }),
+                    "EX",
+                    60 * 60
+                );
+                return res.status(200).json({
+                    data: data,
+                });
+            } catch (err) {
+                console.log(err);
+                res.status(500).json({
+                    error: err,
+                });
+            }
+        }
+    });
 });
+
+router.get("/insta/hash", async(req, res) => {
+    try {
+        let hashtag = req.query.tag;
+        client.get(`hash:${hashtag}`, async(err, reply) => {
+            if (reply) {
+                reply = JSON.parse(reply);
+                res.json(reply.data);
+            } else {
+                let baseURL = "https://graph.facebook.com/ig_hashtag_search?user_id=";
+                let finalURL = baseURL + process.env.INSTAGRAM_ID + "&q=" + hashtag + "&access_token=" + process.env.ACCESS_TOKEN;
+                const resp = await axios.get(finalURL)
+                let hashtagID = resp.data.data[0].id
+                let secondUrl = "https://graph.facebook.com/" + hashtagID + "/recent_media?user_id=" + process.env.INSTAGRAM_ID + "&fields=permalink,caption,comments_count,like_count,media_type,media_url&access_token=" + process.env.ACCESS_TOKEN;
+                const final = await axios.get(secondUrl)
+                client.set(
+                    `hash:${hashtag}`,
+                    JSON.stringify({
+                        data: final.data,
+                    }),
+                    "EX",
+                    60 * 60
+                );
+                res.json(final.data)
+            }
+        })
+    } catch (err) {
+        res.status(500).send(err)
+    }
+})
 
 module.exports = router;
