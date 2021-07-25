@@ -17,7 +17,6 @@ let checkURL = function(item) {
         caption.split(" ").forEach((part) => {
             // let regexWithoutHttp = /[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&//=]*)/;
             part = part.replace(/(\r\n|\n|\r)/gm, "");
-            console.log(part)
             let regexWithHttp = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&\/=]*)/;
 
             if (part.includes("https")) {
@@ -27,7 +26,6 @@ let checkURL = function(item) {
 
             if (part.match(regexWithHttp) || part.includes("dscv.it")) {
                 part = part.split(/[\r\n]+/gm)
-                console.log(part[0])
                 item.url = part[0];
             }
         });
