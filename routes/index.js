@@ -41,7 +41,7 @@ router.get('/', (_req, res) => {
    client.get("completeData", async(err, reply) => {
         if (reply) {
             reply = JSON.parse(reply);
-            res.json(reply);
+            res.send(reply);
         } else {
             try {
                 let result = await axios.get(url);
@@ -55,12 +55,12 @@ router.get('/', (_req, res) => {
                     "EX",
                     60 * 60
                 );
-                return res.status(200).json({
+                return res.status(200).send({
                     data: data,
                 });
             } catch (err) {
                 console.log(err);
-                res.status(500).json({
+                res.status(500).send({
                     error: err,
                 });
             }
@@ -74,7 +74,7 @@ router.get("/insta/hash", async(req, res) => {
         client.get(`hash:${hashtag}`, async(err, reply) => {
             if (reply) {
                 reply = JSON.parse(reply);
-                res.json(reply.data);
+                res.send(reply.data);
             } else {
                 let baseURL = "https://graph.facebook.com/ig_hashtag_search?user_id=";
                 let finalURL = baseURL + process.env.INSTAGRAM_ID + "&q=" + hashtag + "&access_token=" + process.env.ACCESS_TOKEN;
@@ -90,7 +90,7 @@ router.get("/insta/hash", async(req, res) => {
                     "EX",
                     60 * 60
                 );
-                res.json(final.data)
+                res.send(final.data)
             }
         })
     } catch (err) {
